@@ -29,16 +29,30 @@ public class Cities {
 
     public Map<String, String> provinceWithOneCity() {
         
-        return null;
+        Map<String,String> map = new HashMap();
+        for(String key : provinces.keySet())
+        {
+            List<String> list = provinces.get(key);
+            String city = list.get(0);
+            map.put(key, city);
+        }
+        return map;
     }
 
     public Collection<String> cities() {
-        return null; 
+        Collection<String> col = new ArrayList();
+        for(List<String> list : provinces.values())
+        {
+            col.addAll(list);
+        }
+        return col;
     }
 
     public static void main(String args[]) {
         Cities c = new Cities();
         System.out.println(c.provinces);
+        System.out.println(c.cities());
+        System.out.println(c.provinceWithOneCity());
 
     }
 }
